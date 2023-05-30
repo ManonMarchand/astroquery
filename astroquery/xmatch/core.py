@@ -28,8 +28,9 @@ class XMatchClass(BaseQuery):
               colRA1=None, colDec1=None, colRA2=None, colDec2=None,
               area='allsky', cache=True, get_query_payload=False, **kwargs):
         """
-        Query the `CDS cross-match service
-        <http://cdsxmatch.u-strasbg.fr/xmatch>`_ by finding matches between
+        Query the `CDS cross-match service<http://cdsxmatch.u-strasbg.fr/xmatch>`_ .
+         
+        This algorithm allows cross matching for catalogs up to    by finding matches between
         two (potentially big) catalogues.
 
         Parameters
@@ -69,6 +70,11 @@ class XMatchClass(BaseQuery):
         -------
         table : `~astropy.table.Table`
             Query results table
+
+        Notes
+        -----
+        See `Pineau et al. (2016)`<10.1051/0004-6361/201629219> for a detailed
+        description of the algorithm 
         """
         response = self.query_async(cat1, cat2, max_distance, colRA1=colRA1, colDec1=colDec1,
                                     colRA2=colRA2, colDec2=colDec2, area=area, cache=cache,
